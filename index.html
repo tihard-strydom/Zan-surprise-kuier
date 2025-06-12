@@ -174,14 +174,15 @@
       </p>
       <p>Asseblief RSVP voor <strong>1 Julie 2025</strong> sodat ons alles kan reg beplan!</p>
 	  <p style="text-align:center; font-size:14px; color:#aaa; margin-top: 10px;">
-        *Druk 'n ruk op die woord <span id="secretTrigger">“Cheers”</span> vir inligting...🤫
-      </p>
-    </div>
+  *Dubbel-klik op die woord <span id="secretTrigger" style="cursor: pointer; color: #888;">“Cheers”</span> vir inligting...🤫
+</p>
 
-    <div id="secretMessage">
-      <p>🍻 Bring baie drank, want ons gaan baie drink! Veral vir Zan se 17de!</p>
-	  <p>Maar hou dit stil, dis ’n obv 'n geheime! 😉🔥</p>
-	  <p>As jy nie kan bring nie <a href="https://wa.me/27608935144" target="Whatsapp" style="text-decoration: none;">Whatsapp</a> my dat ek kan plan maak dat ons genoeg het!</p>
+<div id="secretMessage" style="display: none; text-align: center; margin-top: 10px;">
+  <p>🍻 Bring baie drank, want ons gaan baie drink! Veral vir Zan se 17de!</p>
+  <p>Maar hou dit stil, dis ’n obv 'n geheime! 😉🔥</p>
+  <p>As jy nie kan bring nie <a href="https://wa.me/27608935144" target="_blank" style="text-decoration: none;">Whatsapp</a> my dat ek kan plan maak dat ons genoeg het!</p>
+</div>
+
     </div>
 
     <div class="map">
@@ -269,26 +270,18 @@
         message = `🎉 Zandré Da Silva se Surprise kuier! 🎂`;
         joke = "";}
 
-    heading.innerHTML = `${message}<br><small style="font-size:16px;color:#ffa;">${joke}</small>`;
-  }
+    heading.innerHTML = `${message}<br><small style="font-size:16px;color:#ffa;">${joke}</small>`;}
 
-      // Long press vir geheime boodskap
-      const secretTrigger = document.getElementById("secretTrigger");
-      const secretMessage = document.getElementById("secretMessage"); let pressTimer;
+     
+		const trigger = document.getElementById("secretTrigger");
+		const message = document.getElementById("secretMessage");
 
-      secretTrigger.addEventListener("touchstart", () => {
-      pressTimer = setTimeout(() => {
-      secretMessage.style.display =
-      secretMessage.style.display === "none" ? "block" : "none";}, 1500);});
+		trigger.addEventListener("dblclick", function () {
+		// Wissel tussen wys en wegsteek
+		if (message.style.display === "none") {
+		message.style.display = "block";} else {message.style.display = "none";}});
 
-      secretTrigger.addEventListener("touchend", () => clearTimeout(pressTimer));
 
-      secretTrigger.addEventListener("mousedown", () => {
-      pressTimer = setTimeout(() => {
-      secretMessage.style.display =
-      secretMessage.style.display === "none" ? "block" : "none";}, 1500);});
-
-  secretTrigger.addEventListener("mouseup", () => clearTimeout(pressTimer));
 
       // 🕐 Countdown funksie
       const countdownElement = document.getElementById("countdown");
