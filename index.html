@@ -1,187 +1,212 @@
 
-<!DOCTYPE html>
-<html lang="af">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Zandré se Surprise kuier!</title>
-  <link rel="icon" href="favicon.png" type="image/png">
+<html lang="af" data-theme="auto">
 
+<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+			<title>🎉 Zandré se Surprise kuier!</title>
+			<link rel="icon" href="favicon.png" type="image/png" />
 
   <style>
       body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Segoe UI', sans-serif;
-        color: white;
-        background: linear-gradient(to bottom right, #3b2516, #5a3c2a); /* verbeterde warm bosveld agtergrond */
-        overflow-x: hidden;
-      }
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      background: linear-gradient(to bottom right, #3b2516, #5a3c2a);
+      overflow-x: hidden;}
 
       .overlay {
-        background-color: rgba(0, 0, 0, 0.6);
-        padding: 50px 20px;
-        min-height: 100vh;
-        animation: fadeIn 2s ease-in-out;
-      }
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 50px 20px;
+      min-height: 100vh;
+      animation: fadeIn 2s ease-in-out;}
 
       @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
+      from {opacity: 0; transform: translateY(20px);}
+	  to {opacity: 1;transform: translateY(0);}}
 
-      h1, h2 {
-        text-align: center;
-        margin-top: 0;
-      }
+      h1,h2 {text-align: center;margin-top: 0;}
 
-      .details, .gallery, .map, .rsvp {
-        max-width: 800px;
-        margin: 40px auto;
-        background-color: rgba(255, 255, 255, 0.1);
-        padding: 20px;
-        border-radius: 15px;
-        animation: fadeIn 2s ease-in-out;
-      }
+      .details,
+      .gallery,
+      .map,
+      .rsvp,
+      .contact {
+      max-width: 800px;
+      margin: 40px auto;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 15px;
+      animation: fadeIn 2s ease-in-out;}
 
-      p {
-        line-height: 1.6;
-        font-size: 18px;
-      }
+      p {line-height: 1.6;font-size: 18px;}
 
-      .rsvp button {
-        background-color: #ff7f50;
-        color: white;
-        padding: 15px 30px;
-        border: none;
-        border-radius: 10px;
-        font-size: 18px;
-        cursor: pointer;
-        display: block;
-        margin: 0 auto;
-        transition: background-color 0.3s ease;
-      }
+      .rsvp button,
+      .contact button {
+      background-color: #ff7f50;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      display: block;
+      margin: 0 auto;
+      transition: background-color 0.3s ease;}
 
-      .rsvp button:hover {
-        background-color: #ff5e2e;
-      }
+      .rsvp button:hover {background-color: #ff5e2e;}
+
+      .contact button {background-color: #25d366;}
+
+      .contact button:hover {
+      background-color: #1ebe57;}
 
       .gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 15px;
-        margin-top: 30px;
-      }
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 15px;
+      margin-top: 30px;}
 
       .gallery-grid img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        border-radius: 8px;
-      }
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;}
 
       iframe {
-        width: 100%;
-        height: 400px;
-        border: none;
-        border-radius: 15px;
-      }
+      width: 100%;
+      height: 400px;
+      border: none;
+      border-radius: 15px;}
 
       audio {
-        display: block;
-        margin: 40px auto;
-      }
+      display: block;
+      margin: 40px auto;}
 
       footer {
-        text-align: center;
-        padding: 20px;
-        background-color: rgba(0, 0, 0, 0.6);
-        margin-top: 40px;
-      }
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.6);
+      margin-top: 40px;}
 
-      /* 🔥 Vuur-effek animasie */
-      .fire {
-        position: fixed;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100px;
-        height: 150px;
-        pointer-events: none;
-        z-index: 1000;
-      }
+      .dropdown {
+      text-align: center;
+      margin-bottom: 30px;}
 
-      .flame {
-        position: absolute;
-        bottom: 0;
-        width: 20px;
-        height: 40px;
-        background: radial-gradient(circle, orange 0%, red 80%, transparent 100%);
-        border-radius: 50% 50% 50% 50%;
-        opacity: 0.7;
-        animation: flicker 0.4s infinite ease-in-out;
-      }
+      .dropdown select {
+      font-size: 18px;
+      padding: 10px 15px;
+      border-radius: 10px;
+      border: none;}
 
-      .flame:nth-child(1) {
-        left: 10%;
-        animation-delay: 0s;
-      }
+      #secretMessage {
+      display: none;
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: rgba(255, 127, 80, 0.2);
+      padding: 15px;
+      border-radius: 12px;
+      color: #fff;
+      text-align: center;
+      font-style: italic;}
 
-      .flame:nth-child(2) {
-        left: 40%;
-        animation-delay: 0.2s;
-      }
+      #secretTrigger {
+      color: #ff7f50;
+      cursor: pointer;
+      user-select: none;}
+	
+	  .countdown-box {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      color: white;
+      text-align: center;
+      font-size: 20px;}
 
-      .flame:nth-child(3) {
-        left: 70%;
-        animation-delay: 0.1s;
-      }
-
-      @keyframes flicker {
-        0% { transform: scaleY(1) scaleX(1); opacity: 0.7; }
-        50% { transform: scaleY(1.4) scaleX(0.9); opacity: 1; }
-        100% { transform: scaleY(1) scaleX(1); opacity: 0.7; }
-      }
+      .countdown-box div {
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 15px;
+      border-radius: 10px;
+      min-width: 80px;}
+	
   </style>
+  
 </head>
 
 <body>
- 
- 
+
   <div class="overlay">
-    <h1>🎉 Zandré Da Silva se Surprise kuier! 🎂</h1>
-	
-<audio id="bgmusic" autoplay loop controls>
-      <source src="Bosveldterapie.mp3" type="audio/mpeg">
-      Jou blaaier ondersteun nie die musiek nie.
-    </audio>
+    <div class="dropdown">
+      <label for="nameSelect" style="font-size: 18px;">👤 Kies jou naam: </label>
+      <select id="nameSelect" onchange="personalize()">
+        <option value="">-- Kies <strong>jou</strong> naam --</option>
+        <option value="Tihard">Tihard Strydom</option>
+        <option value="Christian">Christian Vorster</option>
+        <option value="Jaydin">Jaydin Pelser</option>
+        <option value="Louis">Louis vd Westhuizen</option>
+        <option value="De Wet">De Wet Grobler</option>
+      </select>
+    </div>
 
-   
+    <h1 id="mainHeading">🎉 Zandré Da Silva se Surprise kuier! 🎂</h1>
 
-  <script>
-    // 🎶 Stel musiek volume op 60%
-    const music = document.getElementById("bgmusic");
-    music.volume = 0.6;
-  </script>
-  
+   <div id="countdown" class="countdown-box"></div>
+
+  <audio id="bgmusic" autoplay loop controls>
+    <source src="Bosveldterapie.mp3" type="audio/mpeg">
+  </audio>
+
     <div class="details">
-      <p>Jy is uitgenooi na Zandré se <em>surprise kuier!</em>  Hy verjaar op <strong>15 Julie</strong>, en die partytjie gaan plaasvind <strong>erens tussen 14 en 20 Julie 2025</strong> – ons finaliseer die presiese datum binnekort sodra sy ma laat weet watse dag die beste gaan werk!</p>
-      <p>Die venue is op my plaas, <strong>Plaas Rooidraai, Rysmierbult, Ventersdorp, 2496</strong> – en alles gaan daar gebeur, van kuier tot eet en slaap. Jy hoef niks saam te bring nie behalwe jouself, jou klere en natuurlik 'n klomp gees! 😄</p>
-      <p>💬 Pssst! Hierdie is ’n geheim... Hierdie gedeelte is ’n verrassing vir Zandré, so asseblief, moenie iets verklap nie! Hy mag glad nie hiervan weet nie, dis iets wat spesiaal agter die skerms vir hom beplan word. As jy hier lees, beteken dit jy’s deel van die wat die geheim moet hou... hou dit stil en maak seker ons verrassing bly veilig tot die regte oomblik! 🎁🤫</p>
-	  <p>Asseblief RSVP voor <strong>1 Julie 2025</strong> sodat ons alles kan reg beplan!</p>
+      <p>
+        Jy is uitgenooi na Zandré se <em>surprise kuier!</em> Hy verjaar op <strong>15 Julie</strong>, en die partytjie gaan plaasvind
+        <strong>erens tussen 14 en 20 Julie 2025</strong> – ons finaliseer die presiese datum binnekort sodra sy ma laat weet watse dag die beste gaan werk!
+      </p>
+      <p>
+        Die venue is op my plaas, <strong>Plaas Rooidraai, Rysmierbult, Ventersdorp, 2496</strong>, en alles gaan daar gebeur, van kuier tot eet en slaap.
+        Jy hoef niks saam te bring nie behalwe jouself, jou klere en natuurlik 'n klomp gees! 😄
+      </p>
+      <p>
+        💬 Pssst! Hierdie is ’n geheim... Hierdie gedeelte is ’n verrassing vir Zandré, so asseblief, moenie iets verklap nie!
+        Hy mag glad nie hiervan weet nie, dis iets wat spesiaal agter die skerms vir hom beplan word. As jy hier lees, beteken dit jy’s deel van die wat die geheim moet hou...
+        hou dit stil en maak seker ons verrassing bly veilig tot die regte oomblik! 🎁🤫
+      </p>
+      <p>Asseblief RSVP voor <strong>1 Julie 2025</strong> sodat ons alles kan reg beplan!</p>
+	  <p style="text-align:center; font-size:14px; color:#aaa; margin-top: 10px;">
+        *Druk 'n ruk op die woord <span id="secretTrigger">“Cheers”</span> vir inligting...🤫
+      </p>
+    </div>
+
+    <div id="secretMessage">
+      <p>🍻 Bring baie drank, want ons gaan baie drink! Veral vir Zan se 17de!</p>
+	  <p>Maar hou dit stil, dis ’n obv 'n geheime! 😉🔥</p>
+	  <p>As jy nie kan bring nie <a href="https://wa.me/27608935144" target="Whatsapp" style="text-decoration: none;">Whatsapp</a> my dat ek kan plan maak dat ons genoeg het!</p>
     </div>
 
     <div class="map">
       <h2>📍 Hoe kom ek daar?</h2>
       <iframe src="https://www.google.com/maps?q=-26.374111,27.132222&hl=af&z=14&output=embed"></iframe>
-      <p><a href="https://maps.app.goo.gl/1j8749FrBxFPc8Cm8?g_st=ic" target="_blank" style="color: #ffa;">Klik hier vir Google Maps rigtinge</a></p>
+      <p><a href="https://maps.app.goo.gl/1j8749FrBxFPc8Cm8?g_st=ic" target="_blank" style="color: #ffa;">Klik hier vir Google Maps rigting</a></p>
     </div>
 
     <div class="rsvp">
       <h2>✅ RSVP Hier</h2>
-      <p>Laat weet ons asb of jy kom deur die vorm in te vul hieronder:</p>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfPodnF4MSQrwoK38ThfA_0v-i9yKuO-9pCeGeGP04VxT01ig/viewform?usp=dialog" target="_blank">
+      <p align="center">Laat weet my asb of jy kom deur die vorm in te vul hieronder:</p>
+      <a
+        href="https://docs.google.com/forms/d/e/1FAIpQLSfPodnF4MSQrwoK38ThfA_0v-i9yKuO-9pCeGeGP04VxT01ig/viewform?usp=dialog"
+        target="_blank"
+      >
         <button>RSVP Nou</button>
+      </a>
+    </div>
+
+    <div class="contact">
+      <h2>📞 Onseker of vrae? Kontak my!</h2>
+      <p align="center">As jy onseker is of enige vrae het oor die surprise kuier, moenie huiwer om my te kontak nie. </p>
+	  <p align="center">Klik net op die WhatsApp-knoppie hier onder:</p>
+      <a href="https://wa.me/27608935144" target="_blank" style="text-decoration: none;">
+        <button>📲 WhatsApp</button>
       </a>
     </div>
 
@@ -189,15 +214,110 @@
       <h2>🔥 Vibes Preview</h2>
       <p>Net 'n voorsmakie van die tipe vibes wat jou wag! Bring daai kampvuurstories saam!</p>
       <div class="gallery-grid">
-        <img src="africa.jpg" alt="Gallery beeld 1">
-        <img src="p2.jpg" alt="Gallery beeld 2">
-        <img src="africa_safari.png" alt="Gallery beeld 3">
-        <img src="sunset.png" alt="Gallery beeld 4">
+        <img src="africa.jpg" alt="Gallery beeld 1"/>
+        <img src="a9.jpg"alt="Gallery beeld 2"/>
+        <img src="a1.jpg" alt="Gallery beeld 3"/>
+        <img src="a2.jpg" alt="Gallery beeld 4"/>
+		<img src="a3.jpg" alt="Gallery beeld 5"/>
+        <img src="a4.jpg" alt="Gallery beeld 6"/>
+        <img src="a5.jpg" alt="Gallery beeld 7"/>
+        <img src="a6.jpg" alt="Gallery beeld 8"/>
+		<img src="a7.jpg" alt="Gallery beeld 9"/>
+        <img src="p2.jpg" alt="Gallery beeld 10"/>
       </div>
     </div>
- <footer>
+
+    <footer>
       <p>&copy;2025 Tihard Strydom 😁 | Surprise kuier vir Zandré 🎂</p>
     </footer>
-  
+  </div>
+
+  <script>
+  // 🎶 Stel musiekvolume op 60%
+  const music = document.getElementById("bgmusic");
+  music.volume = 0.6;
+
+  function personalize() {
+    const name = document.getElementById("nameSelect").value;
+    const heading = document.getElementById("mainHeading");
+
+    let message = "";
+    let joke = "";
+
+    switch (name) {
+      case "Tihard":
+        message = `🎉 Tihard, jy is uitgenooi na Zandré se Surprise kuier!🎂`;
+        joke = "En moenie worry nie, ek moet myself terughou om nie te vroeg 'n vuur te maak nie!😂🔥";
+        break;
+      case "Louis":
+        message = `🎉 Louis, jy is uitgenooi na Zandré se Surprise kuier!🎂`;
+        joke = "Hou maar daai dop naby, ons ontdek dalk vir Marius in die bos!🍻🌲😅";
+        break;
+      case "Christian":
+        message = `🎉 Christiaan, jy is amptelik deel van die surprise span!🎂`;
+        joke = "Jy help reel, maar komaan, jy ken die plaas mos al soos jou eie huis!🧠🐄";
+        break;
+      case "Jaydin":
+        message = `🎉 Jaydin, jy is uitgenooi na Zandré se Surprise kuier!🎂`;
+        joke = "Ons weet jy's klein, vinnig en vol energie... maar dis presies hoekom jy moet weg bly van Whiskey!⚡😄";
+        break;
+      case "De Wet":
+        message = `🎉 De Wet, dis jou beurt om in te val by die kuier! 🎂`;
+        joke = "Ek het dalk nie 'n rugbyveld hier nie, maar ek het wild, en nooit sal jy ooit een tackle!🏉😂";
+        break;
+      default:
+        message = `🎉 Zandré Da Silva se Surprise kuier! 🎂`;
+        joke = "";}
+
+    heading.innerHTML = `${message}<br><small style="font-size:16px;color:#ffa;">${joke}</small>`;
+  }
+
+      // Long press vir geheime boodskap
+      const secretTrigger = document.getElementById("secretTrigger");
+      const secretMessage = document.getElementById("secretMessage"); let pressTimer;
+
+      secretTrigger.addEventListener("touchstart", () => {
+      pressTimer = setTimeout(() => {
+      secretMessage.style.display =
+      secretMessage.style.display === "none" ? "block" : "none";}, 1500);});
+
+      secretTrigger.addEventListener("touchend", () => clearTimeout(pressTimer));
+
+      secretTrigger.addEventListener("mousedown", () => {
+      pressTimer = setTimeout(() => {
+      secretMessage.style.display =
+      secretMessage.style.display === "none" ? "block" : "none";}, 1500);});
+
+  secretTrigger.addEventListener("mouseup", () => clearTimeout(pressTimer));
+
+      // 🕐 Countdown funksie
+      const countdownElement = document.getElementById("countdown");
+      const targetDate = new Date("July 15, 2025 00:00:00").getTime();
+
+      function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+      countdownElement.innerHTML = "🎉 Dis tyd om te party! 🎂";
+      return;}
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+       countdownElement.innerHTML = `
+      <div><strong>${days}</strong><br>dae</div>
+      <div><strong>${hours}</strong><br>ure</div>
+      <div><strong>${minutes}</strong><br>minute</div>
+      <div><strong>${seconds}</strong><br>sekondes</div>`;}
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+	  
+</script>
+
 </body>
 </html>
