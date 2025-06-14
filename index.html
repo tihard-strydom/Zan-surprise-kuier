@@ -236,13 +236,55 @@
   </div>
 
   <script>
-  // 🎶 Stel musiekvolume op 60%
+// 🎶 Stel musiekvolume op 60%
+document.addEventListener("DOMContentLoaded", function () {
   const music = document.getElementById("bgmusic");
   music.volume = 0.6;
 
-  function personalize() {
-    const name = document.getElementById("nameSelect").value;
-    const heading = document.getElementById("mainHeading");
+  // 🕐 Countdown funksie
+  const countdownElement = document.getElementById("countdown");
+  const targetDate = new Date("July 15, 2025 10:00:00").getTime();
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    if (distance < 0) {
+      countdownElement.innerHTML = "🎉 Dis tyd om te party! 🎂";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    countdownElement.innerHTML = `
+      <div><strong>${days}</strong><br>dae</div>
+      <div><strong>${hours}</strong><br>ure</div>
+      <div><strong>${minutes}</strong><br>minute</div>
+      <div><strong>${seconds}</strong><br>sekondes</div>`;
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // 💬 Secret Message toggle
+  const trigger = document.getElementById("secretTrigger");
+  const message = document.getElementById("secretMessage");
+
+  if (trigger && message) {
+    trigger.addEventListener("dblclick", function () {
+      message.style.display = message.style.display === "none" ? "block" : "none";
+    });
+  }
+
+  // 🎯 Persoonlike begroeting
+  const nameSelect = document.getElementById("nameSelect");
+  const heading = document.getElementById("mainHeading");
+
+  nameSelect.addEventListener("change", function () {
+    const name = nameSelect.value;
 
     let message = "";
     let joke = "";
@@ -268,61 +310,18 @@
         message = `🎉 De Wet, dis jou beurt om in te val by die kuier! 🎂`;
         joke = "Ek het dalk nie 'n rugbyveld hier nie, maar ek het wild, en nooit sal jy ooit een tackle!🏉😂";
         break;
-        case "Zelda":
+      case "Zelda":
         message = `🎉 Beste Tannie Zelda, hier volg die uitnodiging vir Zandré se Surprise kuier! 🎂`;
-        joke = "Baie dankie dat tannie hierdie spesiale oomblik saam met ons moontlik maak. Ek waardeer tannie se oop hart en bereidwilligheid om Zandré se verrassing-kuier saam met my te help beplan. Dis vir my ongelooflik kosbaar om vir Zandré iets besonders te kan reël, en sonder tannie sou dit glad nie moontlik wees nie.  Ek glo dat Zandré hierdie herinnering vir altyd sal koester. Dankie vir tannie se vertroue. 💛</p>";
+        joke = "Baie dankie dat tannie hierdie spesiale oomblik saam met ons moontlik maak. Ek waardeer tannie se oop hart en bereidwilligheid om Zandré se verrassing-kuier saam met my te help beplan. Dis vir my ongelooflik kosbaar om vir Zandré iets besonders te kan reël, en sonder tannie sou dit glad nie moontlik wees nie.  Ek glo dat Zandré hierdie herinnering vir altyd sal koester. Dankie vir tannie se vertroue. 💛";
         break;
       default:
         message = `🎉 Zandré Da Silva se Surprise kuier! 🎂`;
-        joke = "";}
-
-    heading.innerHTML = `${message}<br><small style="font-size:16px;color:#ffa;">${joke}</small>`;}
-
-     
-		const trigger = document.getElementById("secretTrigger");
-		const message = document.getElementById("secretMessage");
-
-		trigger.addEventListener("dblclick", function () {
-		// Wissel tussen wys en wegsteek
-		if (message.style.display === "none") {
-		message.style.display = "block";} else {message.style.display = "none";}});
-
-
-// 🕐 Countdown funksie
-const countdownElement = document.getElementById("countdown");
-      const targetDate = new Date("July 15, 2025 10:00:00").getTime();
-
-     document.addEventListener("DOMContentLoaded", function () {
-  const countdownElement = document.getElementById("countdown");
-  const targetDate = new Date("July 15, 2025 10:00:00").getTime();
-
-  function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = targetDate - now;
-
-    if (distance < 0) {
-      countdownElement.innerHTML = "🎉 Dis tyd om te party! 🎂";
-      return;
+        joke = "";
     }
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor(
-      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    );
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    countdownElement.innerHTML = `
-      <div><strong>${days}</strong><br>dae</div>
-      <div><strong>${hours}</strong><br>ure</div>
-      <div><strong>${minutes}</strong><br>minute</div>
-      <div><strong>${seconds}</strong><br>sekondes</div>`;
-  }
-
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
+    heading.innerHTML = `${message}<br><small style="font-size:16px;color:#ffa;">${joke}</small>`;
+  });
 });
-	  
 </script>
 
 </body>
